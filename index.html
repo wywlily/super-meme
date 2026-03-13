@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>選擇權獲利計算器</title>
 
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:30px;
+max-width:600px;
+margin:auto;
+}
+
+.box{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#007aff;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>台指選擇權獲利計算</h2>
+
+<label>現價</label>
+<input id="spot">
+
+<label>履約價</label>
+<input id="strike">
+
+<label>權利金</label>
+<input id="premium">
+
+<label>未來價格</label>
+<input id="future">
+
+<button onclick="calc()">計算</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function calc(){
+
+let strike = Number(document.getElementById("strike").value)
+let premium = Number(document.getElementById("premium").value)
+let future = Number(document.getElementById("future").value)
+
+let intrinsic = Math.max(future-strike,0)
+
+let profit = (intrinsic-premium)*50
+
+document.getElementById("result").innerHTML =
+"每口損益：" + profit + " 元"
+
+}
+
+</script>
+
+</body>
+</html>
